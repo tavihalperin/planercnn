@@ -252,6 +252,7 @@ def visualizeBatchDetection(options, config, input_dict, detection_dict, indexOf
         pass
 
     if 'depth_ori' in detection_dict:
+        np.save(options.test_dir + '/' + str(indexOffset) + '_depth' + suffix +prediction_suffix + '_ori.npy', detection_dict['depth_ori'].squeeze().detach().cpu().numpy()[80:560])
         cv2.imwrite(options.test_dir + '/' + str(indexOffset) + '_depth' + suffix + prediction_suffix + '_ori.png', drawDepthImage(detection_dict['depth_ori'].squeeze().detach().cpu().numpy()[80:560]))
         pass
     
@@ -378,6 +379,7 @@ def visualizeBatchDepth(options, config, input_dict, detection_dict, indexOffset
     if 'depth_np' in detection_dict:
         for batchIndex, depth in enumerate(detection_dict['depth_np'].detach().cpu().numpy()):
             cv2.imwrite(options.test_dir + '/' + str(indexOffset + batchIndex) + '_depth_pred_np' + suffix + '.png', drawDepthImage(depth))
+            np.save(options.test_dir + '/' + str(indexOffset + batchIndex) + '_depth_pred_np' +suffix + '.npy', depth)
             continue
         pass
     
