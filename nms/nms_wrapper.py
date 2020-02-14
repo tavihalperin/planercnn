@@ -4,11 +4,7 @@
 # Licensed under The MIT License [see LICENSE for details]
 # Written by Ross Girshick
 # --------------------------------------------------------
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
 
-# from nms.pth_nms import pth_nms
 import torchvision
 
 def nms(dets, thresh):
@@ -16,4 +12,3 @@ def nms(dets, thresh):
   Accept dets as tensor"""
   return torchvision.ops.nms(dets[:, :4], dets[:, 4], thresh)
 
-  # return pth_nms(dets, thresh)
